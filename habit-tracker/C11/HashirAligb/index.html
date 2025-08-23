@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker - Week 1</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Hashir's CS And Fitness Tracker</h1>
+      <p>How I will stay organized with how much I am achieving</p>
+    </header>
+
+    <main>
+      <!-- Add New Habit Form -->
+      <section class="add-habit-section">
+        <h2>Add New Habit</h2>
+        <form id="habit-form">
+          <div class="form-group">
+            <label for="habit-name">Habit Name:</label>
+            <input type="text" id="habit-name" name="habit-name" required placeholder="e.g., LeetCode problem, Bench press, 5k run">
+          </div>
+          
+          <div class="form-group">
+            <label for="habit-frequency">Frequency:</label>
+            <select id="habit-frequency" name="habit-frequency">
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </div>
+          
+          <button type="submit">Add Habit</button>
+        </form>
+      </section>
+
+      <!-- Habit List Section -->
+      <section class="habits-section">
+        <h2>My Habits</h2>
+        <div id="habits-container">
+          <!-- Habits will be displayed here -->
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <h2>Progress</h2>
+        <div id="stats-container">
+          <!-- Stats will be displayed here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+</html>

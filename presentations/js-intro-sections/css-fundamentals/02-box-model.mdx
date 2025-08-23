@@ -1,4 +1,4 @@
-import { SlideLayout } from 'spectacle'
+import { SlideLayout, Notes } from 'spectacle'
 import { CodeDisplay, File } from '../../components/CodeDisplayWithSlideTracking'
 
 <SlideLayout.Full>
@@ -15,8 +15,16 @@ import { CodeDisplay, File } from '../../components/CodeDisplayWithSlideTracking
 <body>
     <h2>Understanding the Box Model</h2>
     
-    <div class="box-demo">
-        <p>Content</p>
+    <div class="box-demo-container">
+        <div class="box-demo">
+            <p>Content</p>
+        </div>
+        
+        <!-- Labels for each part -->
+        <div class="label margin-label">Margin (red)</div>
+        <div class="label border-label">Border (black)</div>
+        <div class="label padding-label">Padding (green)</div>
+        <div class="label content-label">Content (white)</div>
     </div>
     
     <div class="box-explained">
@@ -39,6 +47,13 @@ import { CodeDisplay, File } from '../../components/CodeDisplayWithSlideTracking
   </File>
   <File name="index.css">
 ```css
+/* Container for the box demo and labels */
+.box-demo-container {
+    position: relative;
+    display: inline-block;
+    margin: 40px;
+}
+
 /* Visual demonstration of box model */
 .box-demo {
     width: 300px;
@@ -47,6 +62,7 @@ import { CodeDisplay, File } from '../../components/CodeDisplayWithSlideTracking
     border: 5px solid #333;
     margin: 20px;
     background-color: #f0f0f0;
+    position: relative;
     
     /* Show the different parts */
     box-shadow: 
@@ -62,6 +78,46 @@ import { CodeDisplay, File } from '../../components/CodeDisplayWithSlideTracking
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+
+/* Labels for each part of the box model */
+.label {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    pointer-events: none;
+}
+
+.margin-label {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: black;
+    top: 0px;
+    right: -120px;
+}
+
+.border-label {
+    background-color: #333;
+    color: white;
+    top: 30px;
+    right: -130px;
+}
+
+.padding-label {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: black;
+    top: 60px;
+    right: -140px;
+}
+
+.content-label {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
+    top: 90px;
+    right: -140px;
 }
 
 /* Box sizing comparison */
@@ -96,4 +152,13 @@ body {
 ```
   </File>
 </CodeDisplay>
+<Notes>
+The CSS Box Model is perhaps the most important concept in CSS. Every element on a web page is a rectangular box, and understanding how these boxes work is crucial for controlling layout and spacing.
+
+Think of each element as a gift box. The content is the gift itself. Padding is the protective foam around the gift. The border is the box itself. Margin is the space you leave between this box and other boxes when packing them for shipping.
+
+The traditional box model can be confusing because width and height only apply to the content area. If you set width: 200px, then add 20px padding and a 5px border, your element is actually 250px wide! This is why box-sizing: border-box is so popular - it includes padding and border in the width calculation, making layouts much more predictable.
+
+Margin has a special behavior called margin collapse - vertical margins between elements don't add up, they overlap, with the larger margin winning. This prevents excessive spacing but can be surprising. Understanding the box model thoroughly will solve 90% of your layout frustrations and is the foundation for more advanced layout techniques.
+</Notes>
 </SlideLayout.Full>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/habit-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker</title>
+  </head>
+  <body class="nunito-font">
+    <div id="root">
+      <nav class="flex-row">
+        <h1>My Habits</h1>
+        <h1>Profile</h1>
+      </nav>
+
+      <section class="user-tools flex-row">
+        <div class="user-search">
+          <input type="search" name="search-result" id="search-bar" placeholder="Find your habits" />
+        </div>
+        <button class="user-add-habit">Add Habit</button>
+        <button class="user-filters">Filters</button>
+      </section>
+
+      <section class="user-habits-container flex-col"></section>
+
+      <div class="modal-overlay hidden"></div>
+
+      <section class="add-habit-modal flex-col hidden">
+        <h1 class="add-habit-modal-heading">Add New Habit</h1>
+        <form id="add-habit-modal-form" class="flex-col">
+          <fieldset class="flex-col">
+            <div class="habit-name">
+              <label for="habit-name">
+                Habit Name
+                <span aria-label="Required Field" class="required-asterisk">*</span>
+              </label>
+              <input type="text" id="habit-name" name="habitName" placeholder="E.g. Running" required />
+            </div>
+
+            <div class="habit-category">
+              <label for="habit-category">
+                Category
+                <span aria-label="Required Field" class="required-asterisk">*</span>
+              </label>
+              <input
+                type="text"
+                id="habit-category"
+                name="habitCategory"
+                required
+                placeholder="E.g. Health, Work, Study"
+              />
+            </div>
+
+            <div class="habit-type">
+              <p>
+                Habit Type
+                <span aria-label="Required Field" class="required-asterisk">*</span>
+              </p>
+              <p>
+                <label for="complete">Done/Not Done</label>
+                <input type="radio" name="habitType" id="complete" value="complete" required />
+                <label for="number">Track Quantity</label>
+                <input type="radio" name="habitType" id="number" value="number" required />
+              </p>
+            </div>
+
+            <div class="habit-quantity-format hidden">
+              <label for="habit-quantity-format">
+                Habit Quantity Format
+                <span aria-label="Required Field" class="required-asterisk">*</span>
+              </label>
+              <input
+                type="text"
+                name="habitQuantityFormat"
+                id="habit-quantity-format"
+                placeholder="E.g. minutes, hours, miles"
+              />
+            </div>
+
+            <div class="habit-description">
+              <label for="habit-desc">Habit Description</label>
+              <textarea
+                name="habitDesc"
+                id="habit-desc"
+                class="nunito-font"
+                placeholder="Describe your habit. Use cues like time and place (“I will [do habit] at [time] in [location]”).
+                &#10;Stack it with an existing habit (“After [current habit], I will [new habit]”). 
+                &#10;What will make this habit obvious, attractive, easy, and satisfying?"
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <section class="add-habit-modal-form-buttons">
+            <button class="create-habit-btn" type="submit">Create Habit</button>
+            <button class="cancel-habit-btn" type="reset">Cancel</button>
+          </section>
+        </form>
+      </section>
+
+      <section class="log-modal flex-col hidden">
+        <h1 class="log-modal-heading">Log For MM-dd-YYYY</h1>
+        <h3 class="log-modal-habit-name">Habit Name</h3>
+        <form class="log-habit-form flex-col" id="log-habit-form">
+          <div class="log-completion-status">
+            <p>Completed?</p>
+            <span>
+              <label for="log-completed">Yes</label>
+              <input type="radio" name="completed" id="log-completed" value="true" />
+              <label for="log-not-completed">No</label>
+              <input type="radio" name="completed" id="log-not-completed" value="false" />
+            </span>
+          </div>
+
+          <div class="log-quantity">
+            <label for="log-quantity">(FORMAT) Completed:</label>
+            <input type="number" name="quantity" id="log-quantity" min="0" step=".01" />
+          </div>
+
+          <div class="log-notes">
+            <label for="log-notes">Notes:</label>
+            <textarea name="notes" id="log-notes" class="nunito-font" placeholder="No Notes"></textarea>
+          </div>
+
+          <div class="log-form-buttons">
+            <button type="submit">Done</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="edit-habit-modal flex-col hidden">
+        <h1 class="edit-modal-heading">Edit HABIT</h1>
+        <form class="edit-habit-form flex-col">
+          <div class="edit-name">
+            <label for="edit-name">Edit Habit Name:<span aria-label="Required Field" class="required-asterisk"> *</span></label>
+            <input type="text" name="editedName" id="edit-name" placeholder="Habit Name" required/>
+          </div>
+          <div class="edit-format">
+            <label for="edit-format">Edit Format:<span aria-label="Required Field" class="required-asterisk"> *</span></label>
+            <input type="text" name="editedFormat" id="edit-format" placeholder="Habit Format" required/>
+            <span class="form-note">Note: Will not convert past data!</span>
+          </div>
+          <div class="edit-category">
+            <label for="edit-category">Edit Category:<span aria-label="Required Field" class="required-asterisk"> *</span></label>
+            <input type="text" name="editedCategory" id="edit-category" placeholder="Habit Category" required/>
+          </div>
+          <div class="edit-desc">
+            <label for="edit-desc">Edit Description:</label>
+            <textarea name="editedDesc" id="edit-desc" class="nunito-font" placeholder="No Description"></textarea>
+          </div>
+          <div class="edit-form-btns">
+            <button type="button">Delete Habit</button>
+            <button type="submit">Done Editing</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <div class="confirm-delete-modal flex-col hidden">
+        <h2 class="confirm-delete-modal-heading">Are you sure you want to delete "HABITNAME"?</h2>
+        <p class="confirm-delete-modal-warning">This action cannot be undone!</p>
+        <form class="confirm-delete-modal-form">
+          <div class="confirm-habit-name">
+            <label for="confirm-habit-name">Type Habit Name To Confirm:</label>
+            <input type="text" name="confirmName" id="confirm-habit-name" placeholder="TYPE `HABITNAME` HERE" required/>
+            <p class="confirm-delete-modal-warning hidden">Name does not match!</p>
+          </div>
+          <div class="confirm-delete-modal-btns flex-row">
+            <button type="submit">Confirm</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,393 @@
+/* :root {
+  --main-bg-color: hsl(60, 75%, 92%);
+  --box-color: hsl(60, 75%, 85%);
+  --main-text-color: rgb(99, 69, 69);
+  --text-hover-color: rgb(99, 69, 69, .6);
+  --text-active-color: rgb(99, 69, 69, .9);
+} */
+
+.nunito-font {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+/* Generics */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* border: 1px solid red; */
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center-items {
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.required-asterisk {
+  color: red;
+  font-weight: bold;
+}
+
+.form-note {
+  font-weight: bold;
+  font-size: 12px;
+  color: red;
+}
+
+/**/
+
+nav {
+  gap: 3rem;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav h1 {
+  cursor: pointer;
+  user-select: none;
+
+  transition: all 75ms ease-in-out;
+}
+
+nav h1:hover {
+  color: var(--text-hover-color);
+}
+
+nav h1:active {
+  color: var(--text-active-color);
+}
+
+/* search, filtering stuff, etc */
+.user-tools {
+  min-height: 60px;
+  border-radius: 8px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  flex-wrap: wrap;
+  user-select: none;
+
+  background-color: lightgreen;
+  padding: .8rem;
+}
+
+.user-search {
+  /* responsive */
+  width: 100%;
+  max-width: 500px;
+  min-width: 150px;
+}
+
+.user-tools button {
+  cursor: pointer;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+}
+
+/* User habits container */
+.user-habits-container {
+  width: 100%;
+  min-height: 300px;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* habit card */
+.habit-card {
+  padding: 1.5rem;
+  min-height: 250px;
+  border-radius: 8px;
+  background-color: lightblue;
+  gap: 5px;
+}
+
+.habit-card-name {
+  user-select: none;
+}
+
+.month-container {
+  display: flex;
+  background-color: white;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.month {
+  display: grid;
+  grid-template-columns: repeat(5, 12.8px);
+  grid-template-rows: repeat(7, 12.8px);
+  gap: 2px;
+  grid-auto-flow: column;
+  margin-right: 5px;
+}
+
+.month-name {
+  writing-mode: sideways-lr;
+  margin-bottom: auto;
+  font-size: 12px;
+  user-select: none;
+}
+
+.date-box {
+  background-color: rgb(202, 202, 202);
+  cursor: pointer;
+  border-radius: 1.5px;
+}
+
+.date-box:hover {
+  outline: 1px solid grey;
+}
+
+.done {
+  background-color: lightgreen;
+}
+
+.todays-date {
+  outline: 1.5px solid gray;
+}
+
+/* modal box */
+.add-habit-modal {
+  padding: 0.8rem;
+  border-radius: 8px;
+  z-index: 2;
+  max-width: 400px;
+  background-color: pink;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal-overlay {
+  padding: 0.8rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+/* add habit form contents */
+#add-habit-modal-form div {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+#add-habit-modal-form fieldset {
+  border: none;
+}
+
+#add-habit-modal-form input[type="text"] {
+  padding: 3px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 280px;
+}
+
+#add-habit-modal-form input[type="radio"][value="complete"] {
+  margin-right: 1rem;
+}
+
+#habit-desc {
+  resize: none;
+  height: 175px;
+  width: 300px;
+  padding: 0.5rem;
+}
+
+.add-habit-modal-form-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Log Modal --- */
+.log-modal {
+  padding: 0.8rem;
+  border-radius: 8px;
+  z-index: 2;
+  width: 100%;
+  max-width: 300px;
+  background-color: pink;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  gap: 4px;
+}
+
+.log-modal form {
+  gap: 4px;
+}
+
+.log-modal div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-modal #log-quantity {
+  width: 75px;
+}
+
+.log-completion-status label,
+.log-completion-status input[type="radio"] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.log-modal .log-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0;
+}
+
+.log-modal #log-notes {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  padding: 0.5rem;
+}
+
+.log-modal .log-form-buttons {
+  margin-left: auto;
+}
+
+.log-modal button {
+  cursor: pointer;
+}
+
+/* --- Edit Modal --- */
+.edit-habit-modal {
+  padding: 0.8rem;
+  border-radius: 8px;
+  z-index: 2;
+  width: 100%;
+  max-width: 320px;
+  background-color: pink;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  gap: 4px;
+}
+
+.edit-habit-form {
+  gap: 5px;
+}
+
+.edit-habit-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-habit-form input {
+  width: 200px;
+}
+
+.edit-habit-form #edit-desc {
+  resize: none;
+  height: 150px;
+  padding: 0.5rem;
+}
+
+.edit-habit-form .edit-form-btns {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.edit-habit-form button {
+  cursor: pointer;
+}
+
+.edit-habit-form button[type="submit"] {
+  margin-left: auto;
+}
+
+.edit-icon {
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Confirm modal */
+.confirm-delete-modal {
+  padding: 0.8rem;
+  border-radius: 8px;
+  z-index: 2;
+  width: 100%;
+  max-width: 320px;
+  background-color: pink;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  gap: 10px;
+}
+
+.confirm-habit-name .confirm-delete-modal-warning {
+  font-size: 12px;
+}
+
+.confirm-delete-modal-warning {
+  font-weight: bold;
+  color: red;
+}
+
+.confirm-delete-modal-btns {
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.confirm-delete-modal button {
+  cursor: pointer;
+  user-select: none;
+}
+
+.confirm-delete-modal-btns button[type="submit"] {
+  margin-left: auto;
+}

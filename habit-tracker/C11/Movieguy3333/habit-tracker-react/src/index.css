@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #c6ffbb, #f9ffda);
+  color: #333;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header {
+  font-size: 2rem;
+  color: #2f4f4f;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #2f4f4f;
+  padding-bottom: 0.5rem;
+}
+
+.form {
+  background-color: #ffffffcc;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form input,
+.form select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.form label {
+  font-weight: 600;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  background: #058e01;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #3e8e41;
+}
+.edit-btn {
+  padding: 0.6rem 1.2rem;
+  background: #01118e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #413e8e;
+}
+.delete-btn {
+  padding: 0.6rem 1.2rem;
+  background: #8e0101;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #460000;
+}
+
+/* Habit container */
+.habits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.habit-item {
+  background: linear-gradient(135deg, #ffffff, #edf382);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgb(0, 77, 4);
+}
+
+.habit-info {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.completion-dates ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.completion-dates li {
+  font-size: 0.95rem;
+  color: #2f4f4f;
+}
+
+.user-stats {
+  background: #ffffffcc;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-info {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+h2 {
+  margin: 0px 0px 15px 0px;
+}
+#habit-name:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  border-top: 3px solid rgb(210, 189, 1);
+  margin-right: 50%;
+}
+
+#habit-name {
+  margin-top: 30px;
+
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-text-stroke: 0.5px rgb(130, 119, 0);
+  text-align: left;
+}
+#habit-name:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding-top: 10px;
+  margin-top: 30px;
+  border-top: 3px groove rgba(158, 142, 0, 0.753);
+  margin-right: 50%;
+}
+
+.habit-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.habit-numeric-info,
+.date-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.date-info ul {
+  padding-left: 1rem;
+}
+.habit-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, #98f822, #2545ff);
+  border: 2px solid #235e01;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.habit-numeric-info,
+.date-info {
+  flex: 1;
+  min-width: 280px;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d8eec4;
+}
+
+.habit-info {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2e4d1d;
+}
+
+.completion-dates ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.completion-dates li {
+  font-size: 1rem;
+  color: #3b3b3b;
+  margin-bottom: 0.25rem;
+  list-style-type: circle;
+}
+
+.habit-numeric-info:hover,
+.date-info:hover {
+  background-color: #f7ffe7;
+  transition: background-color 0.3s ease;
+}
+.habit-section-heading {
+  color: #005d08;
+  border-bottom: 4px dashed #a8d98b;
+  margin-bottom: 1rem;
+  padding: 6px;
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .form,
+  .habit-item,
+  .user-stats {
+    padding: 1rem;
+  }
+}
